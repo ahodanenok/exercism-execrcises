@@ -2,6 +2,11 @@
 #include <stdlib.h>
 #include "isogram.h"
 
+/**
+ * Isogram
+ * https://exercism.org/tracks/c/exercises/isogram
+ */
+
 bool is_isogram(const char phrase[])
 {
     if (phrase == NULL) {
