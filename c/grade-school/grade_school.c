@@ -1,4 +1,3 @@
-#include <stdlib.h>
 #include <string.h>
 #include "grade_school.h"
 
@@ -42,10 +41,10 @@ int add_student(roster_t *actual, char *name, uint8_t grade)
         actual->students[i] = actual->students[i - 1];
     }
 
-    student_t *student = malloc(sizeof(student_t));
-    student->grade = grade;
-    strcpy(student->name, name);
-    actual->students[pos] = *student;
+    student_t student;
+    student.grade = grade;
+    strcpy(student.name, name);
+    actual->students[pos] = student;
     actual->count++;
 
     return 1;
@@ -53,16 +52,16 @@ int add_student(roster_t *actual, char *name, uint8_t grade)
 
 roster_t get_grade(roster_t *actual, uint8_t grade)
 {
-    roster_t *result = malloc(sizeof(roster_t));
-    result->count = 0;
+    roster_t result;
+    result.count = 0;
 
     int pos = 0;
     for (size_t i = 0; i < actual->count; i++) {
         if (actual->students[i].grade == grade) {
-            result->students[pos++] = actual->students[i];
-            result->count++;
+            result.students[pos++] = actual->students[i];
+            result.count++;
         }
     }
 
-    return *result;
+    return result;
 }
